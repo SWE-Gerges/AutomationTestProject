@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-05-27T01:06:54 EET" name="Default suite" finished-at="2022-05-27T01:07:10 EET" duration-ms="16172">
+    <groups>
+    </groups>
+    <test started-at="2022-05-27T01:06:54 EET" name="Default test" finished-at="2022-05-27T01:07:10 EET" duration-ms="16172">
+      <class name="qaproject.webtest">
+        <test-method signature="verifyAddingCart_WO_Login()[pri:0, instance:qaproject.webtest@2df9b86]" started-at="2022-05-27T01:06:54 EET" name="verifyAddingCart_WO_Login" finished-at="2022-05-27T01:07:10 EET" duration-ms="16115" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAddingCart_WO_Login -->
+      </class> <!-- qaproject.webtest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
