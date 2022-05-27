@@ -1,11 +1,15 @@
 package qaproject;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
-
+import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Driver;
 import java.util.concurrent.TimeUnit;
-
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -210,8 +214,8 @@ public void searchProduct() {
 
 
 @SuppressWarnings("deprecation")
-//@Test
-public void addToCart() throws InterruptedException {
+@Test
+public void addToCart() throws InterruptedException, IOException {
 	
 //	System.setProperty("webdriver.edge.driver", 
 //			"/home/goosa/edgedriver_linux64/msedgedriver");
@@ -222,6 +226,9 @@ public void addToCart() throws InterruptedException {
 	WebElement addToCartBtn, cartLayer;
 	addToCartBtn = driver.findElement(By.linkText("Add to cart"));
 	addToCartBtn.click();
+	
+	TakeScreenshot("AddItemToCart");
+	
 	
 	
 }
@@ -251,9 +258,9 @@ public void verifyAddingWish_WO_Login() {
 }
 
 @SuppressWarnings("deprecation")
-@Test
+//@Test
 public void verifyQuantityReflection() throws InterruptedException {
-	addToCart();
+	//addToCart();
 	//WebDriver driver = new EdgeDriver();
 	//initWebDriver("http://automationpractice.com/index.php");
 	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -273,4 +280,15 @@ public void verifyQuantityReflection() throws InterruptedException {
 	
 	
 }
+
+public void TakeScreenshot(String FileName)
+        throws IOException
+    {
+        // Creating instance of File
+        File File = ((TakesScreenshot)driver)
+                        .getScreenshotAs(OutputType.FILE);
+ 
+        FileUtils.copyFile(File,
+                           new File(FileName + ".png"));
+    }
 }
