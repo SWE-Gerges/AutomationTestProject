@@ -5,7 +5,7 @@
     <classes>
       <class name="qaproject.webtest">
         <methods>
-          <include name="verifyAddingCart_WO_Login"/>
+          <include name="verifyQuantityReflection"/>
         </methods>
       </class> <!-- qaproject.webtest -->
     </classes>

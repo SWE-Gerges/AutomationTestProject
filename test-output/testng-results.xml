@@ -2,15 +2,15 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-05-27T01:06:54 EET" name="Default suite" finished-at="2022-05-27T01:07:10 EET" duration-ms="16172">
+  <suite started-at="2022-05-27T23:23:58 EET" name="Default suite" finished-at="2022-05-27T23:24:18 EET" duration-ms="20143">
     <groups>
     </groups>
-    <test started-at="2022-05-27T01:06:54 EET" name="Default test" finished-at="2022-05-27T01:07:10 EET" duration-ms="16172">
+    <test started-at="2022-05-27T23:23:58 EET" name="Default test" finished-at="2022-05-27T23:24:18 EET" duration-ms="20143">
       <class name="qaproject.webtest">
-        <test-method signature="verifyAddingCart_WO_Login()[pri:0, instance:qaproject.webtest@2df9b86]" started-at="2022-05-27T01:06:54 EET" name="verifyAddingCart_WO_Login" finished-at="2022-05-27T01:07:10 EET" duration-ms="16115" status="PASS">
+        <test-method signature="verifyQuantityReflection()[pri:0, instance:qaproject.webtest@4de4b452]" started-at="2022-05-27T23:23:58 EET" name="verifyQuantityReflection" finished-at="2022-05-27T23:24:18 EET" duration-ms="20087" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyAddingCart_WO_Login -->
+        </test-method> <!-- verifyQuantityReflection -->
       </class> <!-- qaproject.webtest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

@@ -13,8 +13,21 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class webtest {
+	public WebDriver driver;
 	
-	
+	@SuppressWarnings("deprecation")
+	public void initWebDriver(String URL) throws InterruptedException {
+
+		// Setting up Edge driver path.
+		System.setProperty("webdriver.edge.driver", 
+				"/home/goosa/edgedriver_linux64/msedgedriver");
+		// Launching Edge browser.
+		driver = new EdgeDriver();
+		driver.get(URL);
+		//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		//driver.manage().window().maximize();
+		//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	}
 	 
 //	WebDriver driver = new EdgeDriver();
 	
@@ -197,23 +210,25 @@ public void searchProduct() {
 
 
 @SuppressWarnings("deprecation")
-@Test
-public void addToCart() {
-	System.setProperty("webdriver.edge.driver", 
-			"/home/goosa/edgedriver_linux64/msedgedriver");
-	WebDriver driver = new EdgeDriver();
-	driver.get("http://automationpractice.com/index.php");
-	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//@Test
+public void addToCart() throws InterruptedException {
 	
+//	System.setProperty("webdriver.edge.driver", 
+//			"/home/goosa/edgedriver_linux64/msedgedriver");
+//	WebDriver driver = new EdgeDriver();
+//	driver.get("http://automationpractice.com/index.php");
+	initWebDriver("http://automationpractice.com/index.php");
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	WebElement addToCartBtn, cartLayer;
 	addToCartBtn = driver.findElement(By.linkText("Add to cart"));
 	addToCartBtn.click();
+	
 	
 }
 
 
 @SuppressWarnings("deprecation")
-@Test
+//@Test
 public void verifyAddingWish_WO_Login() {
 	System.setProperty("webdriver.edge.driver", 
 			"/home/goosa/edgedriver_linux64/msedgedriver");
@@ -232,11 +247,30 @@ public void verifyAddingWish_WO_Login() {
 	errMsg = driver.findElement(By.className("fancybox-error"));
 	assert(errMsg.getText().contains("You must be logged in"));
 	
+	
 }
 
+@SuppressWarnings("deprecation")
 @Test
-public void verifyQuantityReflection() {
+public void verifyQuantityReflection() throws InterruptedException {
 	addToCart();
+	//WebDriver driver = new EdgeDriver();
+	//initWebDriver("http://automationpractice.com/index.php");
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+	//############################################################
+	WebElement cartBtn, closeBtn, plusBtn, price;
+	closeBtn = driver.findElement(By.className("cross"));
+	closeBtn.click();
+	cartBtn = driver.findElement(By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a"));
+	cartBtn.click();
+	
+	plusBtn = driver.findElement(By.className("icon-plus"));
+	plusBtn.click();
+	Thread.sleep(6000);
+	price = driver.findElement(By.id("total_price"));
+	assertEquals(price.getText(),"$35.02");
+	
 	
 }
 }
