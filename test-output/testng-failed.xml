@@ -5,6 +5,7 @@
     <classes>
       <class name="qaproject.webtest">
         <methods>
+          <include name="verifyAddingWish_WO_Login"/>
           <include name="verifyQuantityReflection"/>
         </methods>
       </class> <!-- qaproject.webtest -->

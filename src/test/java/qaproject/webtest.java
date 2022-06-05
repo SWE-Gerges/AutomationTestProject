@@ -5,6 +5,7 @@ import java.io.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Driver;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -13,13 +14,13 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class webtest {
 	public WebDriver driver;
 	
-	@SuppressWarnings("deprecation")
 	public void initWebDriver(String URL) throws InterruptedException {
 
 		// Setting up Edge driver path.
@@ -28,256 +29,220 @@ public class webtest {
 		// Launching Edge browser.
 		driver = new EdgeDriver();
 		driver.get(URL);
-		//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	
 		//driver.manage().window().maximize();
-		//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	
 	}
 	 
-//	WebDriver driver = new EdgeDriver();
+/*
+ *  1* Driver
+ *  2* inspect
+ *  3* get element
+ *  4* sendkey
+ *  5*sumbit
+ */
 	
-//public WebElement find(String id) {
-//	
-//	WebElement element;
-//	element = driver.findElement(By.id(id));
-//	return element;
-//	
-//}
+public WebElement find(String id) {
 	
+	WebElement element;
+	element = driver.findElement(By.id(id));
+	return element;
 	
-  
+}
+	
 
-  
-  
-//  public void prop() {
-//		System.setProperty("webdriver.edge.driver", 
-//				"/home/goosa/edgedriver_linux64/msedgedriver");
-//		WebDriver driver = new EdgeDriver();
-//		
-//		driver.get("http://automationpractice.com/index.php");
-//
-//		//driver.quit();
-//	}
-  
-  
-  
-//  	@SuppressWarnings("deprecation")
-//  @Test
-//  public void register() {
-//  		System.setProperty("webdriver.edge.driver", 
-//				"/home/goosa/edgedriver_linux64/msedgedriver");
-//  		WebDriver driver = new EdgeDriver();
-//  		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-//		driver.get("http://automationpractice.com/index.php?controller=my-account");
-//		
-//		WebElement submitBtn, accountCheck;
-//		
-//		//Find& write email to register with
-//		find("email_create").sendKeys("emailtotest@gmail.com");
-//		
-//		//submit Button
-//		find("SubmitCreate").click();
-//		
-//		//find and write on first name, last name. each by it's id
-//		find("customer_firstname").sendKeys("NameFirst");
-//		find("customer_lastname").sendKeys("NameLast");
-//		
-//		//Find& write password
-//		find("passwd").sendKeys("123456789");
-//		
-//		//Find& write address
-//		find("address1").sendKeys("Giza,Cairo");
-//		
-//		
-//		//Find& write address
-//		find("city").sendKeys("October");
-//		
-//		
-//		// Drop down elements test
-//		
-//		Select states = new Select(find("id_state"));
-//		assertFalse(states.isMultiple());
-//		states.selectByValue("1");
-//		assertEquals("Alabama", states.getFirstSelectedOption().getText());
-//		
-//		//Find and write post code
-//		find("postcode").sendKeys("12345");
-//		
-//		//Find and write Phone number
-//		find("phone_mobile").sendKeys("0123456789");
-//
-//		//Find and write alias
-//		find("alias").sendKeys("october2145");
-//		
-//		
-//		
-//		submitBtn = driver.findElement(By.xpath("//*[@id=\"submitAccount\"]/span/i"));
-//		submitBtn.click();
-//		
-//		accountCheck = driver.findElement(By.className("info-account"));
-//		assert(accountCheck.getText().contains("Welcome to your account."));
-//  		
-//  		
-//  	}
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-@SuppressWarnings("deprecation")
-//@Test
-  public void Reg() {
-	  
-		System.setProperty("webdriver.edge.driver", 
-				"/home/goosa/edgedriver_linux64/msedgedriver");
-		WebDriver driver = new EdgeDriver();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.get("http://automationpractice.com/index.php?controller=my-account");
-		
-		WebElement email_create, create_button, firstName, lastName,
-		password, address, city, postalcode, phoneNumber, alias, submitBtn, accountCheck;
-		email_create = driver.findElement(By.id("email_create"));
-		email_create.sendKeys("Gx002507@gmail.com");
-		
-		create_button = driver.findElement(By.id("SubmitCreate"));
-		create_button.click();
-		
-		firstName = driver.findElement(By.id("customer_firstname"));
-		firstName.sendKeys("Gergesk");
-		lastName = driver.findElement(By.id("customer_lastname"));
-		lastName.sendKeys("Tharwatk");
+
+  	
+  @Test
+  public void register() throws InterruptedException, IOException {
+  		initWebDriver("http://automationpractice.com/index.php?controller=my-account");
+  		driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
 		
 		
-    	password = driver.findElement(By.id("passwd"));
-		password.sendKeys("123456");
+		WebElement submitBtn, accountCheck;
 		
-		address = driver.findElement(By.id("address1"));
-		address.sendKeys("Giza/Cairo");
+		//Find& write email to register with
+		find("email_create").sendKeys("emailtotest251@gmail.com");
 		
-		city = driver.findElement(By.id("city"));
-		city.sendKeys("October");
+		//submit Button
+		find("SubmitCreate").click();
+		
+		//find and write on first name, last name. each by it's id
+		find("customer_firstname").sendKeys("NameFirst");
+		find("customer_lastname").sendKeys("NameLast");
+		
+		//Find& write password
+		find("passwd").sendKeys("123456789");
+		
+		//Find& write address
+		find("address1").sendKeys("Giza,Cairo");
+		
+		
+		//Find& write address
+		find("city").sendKeys("October");
+		
 		
 		// Drop down elements test
 		
-		Select states = new Select(driver.findElement(By.id("id_state")));
+		Select states = new Select(find("id_state"));
 		assertFalse(states.isMultiple());
 		states.selectByValue("1");
 		assertEquals("Alabama", states.getFirstSelectedOption().getText());
 		
-		postalcode = driver.findElement(By.id("postcode"));
-		postalcode.sendKeys("56465");
+		//Find and write post code
+		find("postcode").sendKeys("12345");
 		
+		//Find and write Phone number
+		find("phone_mobile").sendKeys("0123456789");
 
-		phoneNumber = driver.findElement(By.id("phone_mobile"));
-		phoneNumber.sendKeys("0123456782");
+		//Find and write alias
+		find("alias").sendKeys("october2145");
 		
-		alias = driver.findElement(By.id("alias"));
-		alias.sendKeys("october2145");
+		
 		
 		submitBtn = driver.findElement(By.xpath("//*[@id=\"submitAccount\"]/span/i"));
 		submitBtn.click();
 		
 		accountCheck = driver.findElement(By.className("info-account"));
 		assert(accountCheck.getText().contains("Welcome to your account."));
-		//driver.quit();
-	}
+		//Sleep for 2 sec to get page
+		//Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
+		//Screenshot
+		TakeScreenshot("RegSuccess");
+		driver.close();
+  		
+  	}
+@Test
 
+public void searchProduct() throws InterruptedException, IOException {
+	initWebDriver("http://automationpractice.com/index.php");
 
-@SuppressWarnings("deprecation")
-//@Test
-
-public void searchProduct() {
-	System.setProperty("webdriver.edge.driver", 
-			"/home/goosa/edgedriver_linux64/msedgedriver");
-	WebDriver driver = new EdgeDriver();
-	driver.get("http://automationpractice.com/index.php");
-	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-	WebElement searchBar, headResults;
-	searchBar= driver.findElement(By.id("search_query_top"));
-	searchBar.sendKeys("printed");
-	searchBar.submit();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 	
+	WebElement headResults;
+	find("search_query_top").sendKeys("printed");
+	find("search_query_top").submit();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+
 	headResults = driver.findElement(By.cssSelector(".page-heading.product-listing"));
 	assert(headResults.getText().contains("PRINTED"));
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+	TakeScreenshot("SearchedProduct");
+	
+	driver.close();
 	
 }
 
 
 
-@SuppressWarnings("deprecation")
-@Test
+
+//@Test
+//This Method will be used in another test (VerifyQuantityReflection)
 public void addToCart() throws InterruptedException, IOException {
 	
-//	System.setProperty("webdriver.edge.driver", 
-//			"/home/goosa/edgedriver_linux64/msedgedriver");
-//	WebDriver driver = new EdgeDriver();
-//	driver.get("http://automationpractice.com/index.php");
 	initWebDriver("http://automationpractice.com/index.php");
-	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
+	
 	WebElement addToCartBtn, cartLayer;
+	
 	addToCartBtn = driver.findElement(By.linkText("Add to cart"));
 	addToCartBtn.click();
 	
 	TakeScreenshot("AddItemToCart");
-	
+	//driver.close();
 	
 	
 }
 
-
-@SuppressWarnings("deprecation")
-//@Test
-public void verifyAddingWish_WO_Login() {
-	System.setProperty("webdriver.edge.driver", 
-			"/home/goosa/edgedriver_linux64/msedgedriver");
-	WebDriver driver = new EdgeDriver();
-	driver.get("http://automationpractice.com/index.php");
-	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+@Test
+public void verifyAddingWish_LoggedIn() throws IOException {
+	try {
+		initWebDriver("http://automationpractice.com/index.php");
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
+	WebElement signinBtn, accountCheck, category, addToWhishList,errMsg;
+	
+	//Sign in
+	signinBtn= driver.findElement(By.linkText("Sign in"));
+	signinBtn.click();
+	find("email").sendKeys("pocat@gmail.com");
+	find("passwd").sendKeys("123456789");
+	find("SubmitLogin").click();
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
+	accountCheck = driver.findElement(By.className("info-account"));
+	assert(accountCheck.getText().contains("Welcome to your account."));
+	
+	// Adding to wish list
+	category = driver.findElement(By.linkText("Women"));
+	category.click();
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
+	addToWhishList = driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/div/div[3]/div[1]/a"));
+	addToWhishList.click();
+	
+	//check if added
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
+	errMsg = driver.findElement(By.className("fancybox-error"));
+	assert(errMsg.getText().contains("Added"));
+	
+	//Screenshot
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
+	TakeScreenshot("VerfiyLoginWishList");
+	driver.close();
+	
+}
+@Test
+public void verifyAddingWish_WO_Login() throws InterruptedException, IOException {
+	initWebDriver("http://automationpractice.com/index.php");
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
 	
 	WebElement category, addToWhishList, errMsg;
 	
 	category = driver.findElement(By.linkText("Women"));
 	category.click();
-	
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
 	addToWhishList = driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/div/div[3]/div[1]/a"));
 	addToWhishList.click();
-	
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
 	errMsg = driver.findElement(By.className("fancybox-error"));
 	assert(errMsg.getText().contains("You must be logged in"));
 	
-	
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
+	TakeScreenshot("VerfiyLoginWishListLoggedIn");
+	driver.close();
 }
 
-@SuppressWarnings("deprecation")
-//@Test
-public void verifyQuantityReflection() throws InterruptedException {
-	//addToCart();
-	//WebDriver driver = new EdgeDriver();
-	//initWebDriver("http://automationpractice.com/index.php");
-	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+@Test
+public void verifyQuantityReflection() throws InterruptedException, IOException {
+	addToCart();
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
 
 	//############################################################
 	WebElement cartBtn, closeBtn, plusBtn, price;
 	closeBtn = driver.findElement(By.className("cross"));
 	closeBtn.click();
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
 	cartBtn = driver.findElement(By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a"));
 	cartBtn.click();
-	
+	driver.manage().timeouts().implicitlyWait( Duration.ofSeconds(3));
 	plusBtn = driver.findElement(By.className("icon-plus"));
 	plusBtn.click();
-	Thread.sleep(6000);
-	price = driver.findElement(By.id("total_price"));
-	assertEquals(price.getText(),"$35.02");
+//	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+//	FluentWait wait = new FluentWait(driver);
+//	wait.withTimeout(Duration.ofSeconds(6));
 	
+	//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+	Thread.sleep(6000); //Implicit, Excplict and Fluent wait methods NOT working in this scenario :)
+	price = driver.findElement(By.id("total_price"));
+	assertEquals(price.getText() ,"$35.02");
+	
+	TakeScreenshot("VerifyPriceReflection");
+	
+	driver.close();
 	
 }
 

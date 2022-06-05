@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Default test"
+           tests="5"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="77.031">
+    <properties></properties>
+
+
+
+            <testcase
+                name="register"
+                time="16.539"
+                classname="qaproject.webtest">
+            </testcase>
+            <testcase
+                name="searchProduct"
+                time="11.699"
+                classname="qaproject.webtest">
+            </testcase>
+            <testcase
+                name="verifyQuantityReflection"
+                time="17.909"
+                classname="qaproject.webtest">
+            </testcase>
+            <testcase
+                name="verifyAddingWish_WO_Login"
+                time="12.886"
+                classname="qaproject.webtest">
+            </testcase>
+            <testcase
+                name="verifyAddingWish_LoggedIn"
+                time="17.998"
+                classname="qaproject.webtest">
+            </testcase>
+</testsuite>
