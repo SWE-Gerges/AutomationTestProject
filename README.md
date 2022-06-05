@@ -1,6 +1,9 @@
 # AutomationTestProject
 project for automation testing using **Selenium, Java-Maven,  TestNG.**
 
+**WebDriver: Edge Driver**
+
+
 **Website Tested: http://automationpractice.com/index.php**
 
 
